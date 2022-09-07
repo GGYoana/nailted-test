@@ -1,0 +1,51 @@
+<style>ul {
+    list-style-type: none;
+  }</style>
+  <%- include("../template/cabecera") %>
+  
+  <body>
+  <%- include("../template/navbar") %>
+  
+  <% if(typeof data !== "undefined") { 
+  
+    const lib = JSON.parse(data);
+  
+  
+    let datos = [];        
+    if(lib.results){
+      datos = lib.results;
+    }else{
+      datos = lib; 
+    } 
+    %>
+    <div class="text-center mt-5" id="containerIntro">
+      <h1 class="mb-0 text-center display-6 mt-5" style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 30px;line-height: 28px;">
+          <%- datos.length %>
+      </h1> 
+      <p class="lead mb-4" style="display: inline;vertical-align: top;font-family: 'Open Sans', sans-serif;font-size: 25px;line-height: 28px;"> Total de usuarios en pantalla</p>	
+  </div>
+  
+  <section class="pt-5" >
+    <%- include("inc/filter") %>
+    <div class="container">   
+        <div class="row d-flex align-items-center justify-content-between mb-5">
+            <div class="col-md-2">
+                <p>Mostrando <%- datos.length %> resultados</p>
+            </div>
+            <div class="col-md-2"><a href="/usuarios/createUser" class="btn" style="background-color:#bee6fd">Añadir nuevo usuario</a></div>
+        </div>
+        <div class="row g-4 justify-content-center">
+       
+       <% for(var i = 0; i < datos.length; i ++ ) { %>
+          <%- include("inc/user",datos[i]) %>
+        <% } // end for  
+      } else { console.log("no hay data") } %>
+      </div>
+      <% if(typeof data !== "undefined") { %>
+      <%- include("inc/pagination") %>
+      <% } %>
+  
+    </div>
+  </section>
+  <%- include("../template/footer") %>
+  

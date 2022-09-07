@@ -1,0 +1,45 @@
+<%- include("../template/cabecera") %>  
+<body>
+<%- include("../template/navbar");%>
+<%  console.log(data) %>
+<section class="pt-5 pb-0">
+	<div class="container">
+		<div class="row g-0 g-lg-5">
+			<div class="col-lg-4">
+				<div class="row">
+					<div class="col-md-6 col-lg-12">						
+                        <div class="card shadow p-2 mb-4 text-center">
+                            <div class="rounded-3">
+                                <img src="/assets/images/avatar/avatar.png" class="avatar-img" alt="course image">
+                            </div>
+                        </div>						
+					</div>					
+				</div> 
+			</div>
+			<div class="col-lg-8">			
+				<!-- Title -->
+				<h5 class="mb-0">Hola, soy</h5>
+				<h1 class="mb-0"><%- `${data.name} ${data.surname}`%></h1>
+				<ul class="list-group list-group-borderless">
+					<li class="list-group-item px-0">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-map-marker-alt text-primary me-1 me-sm-3"></i>Dirección:</span>
+						<span><%- data.address %></span>
+					</li>
+					<li class="list-group-item px-0">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-envelope text-primary me-1 me-sm-3"></i>Email:</span>
+						<span><%- data.email %></span>
+					</li>
+					<li class="list-group-item px-0">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-headphones text-primary me-1 me-sm-3"></i>Teléfono:</span>
+						<span><%- data.phone %></span>
+					</li>
+					<li class="list-group-item px-0">
+						<span class="h6 fw-light"><i class="fas fa-fw fa-calendar text-primary me-1 me-sm-3"></i>Fecha de nacimiento:</span>
+						<span><%- data.birthdate %></span>
+					</li>
+				</ul>
+            </div>
+		</div>
+	</div>
+</section>
+<%- include("../template/footer") %>

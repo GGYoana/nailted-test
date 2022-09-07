@@ -1,0 +1,55 @@
+<!-- Pagination START -->
+<div class="col-12">
+  <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+    <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+
+        
+      <% if(typeof data !== "undefined") { 
+        const datos = JSON.parse(data);
+        %>
+        
+        <div id="listingTable"></div>
+        <% 
+        var parametros = locationSearch;
+        //let parametros = Object.fromEntries(new URLSearchParams(str));
+        
+        let previous = datos.previous ? datos.previous.page : 1;
+        let actual = parametros.page ? parametros.page : 1;
+        let next = datos.next ? datos.next.page : parametros.page ? parametros.page + 1 : 2;
+        let limit = parametros.limit > 0 ? parametros.limit : 20;
+
+        const urlFirst = () => {          
+          parametros.page = 1;
+          parametros.limit = limit;
+          return new URLSearchParams(parametros).toString();
+        }
+        const urlPrevious = () => {          
+          parametros.page = previous;
+          parametros.limit = limit;
+          return new URLSearchParams(parametros).toString();
+        }
+        const urlActual = () => {          
+          parametros.page = actual;
+          parametros.limit = limit;
+          return new URLSearchParams(parametros).toString();
+        }
+        const urlNext = () => {          
+          parametros.page = next;
+          parametros.limit = limit;
+          return new URLSearchParams(parametros).toString();
+        }
+        const urlLast = () => {          
+          parametros.page = 0;
+          parametros.limit = limit;
+          return new URLSearchParams(parametros).toString();
+        }
+        %>
+        <li class="page-item mb-0" ><a class="page-link" tabindex="-1" href="/usuarios/paginate?<%= urlFirst() %>"><i class="fas fa-angle-double-left"></i></a></li>     
+        <li class="page-item mb-0" ><a class="page-link" href="/usuarios/paginate?<%= urlPrevious() %>"><i class="fas fa-angle-left"></i></a></li>             
+        <li class="page-item mb-0"><a class="page-link" href="/usuarios/paginate?<%= urlActual() %>"><%= actual %></a></li> 
+        <li class="page-item mb-0"><a class="page-link" href="/usuarios/paginate?<%=urlNext() %>"><i class="fas fa-angle-right"></i> </a></li>          
+        <li class="page-item mb-0"><a class="page-link" href="/usuarios/paginate?<%= urlLast() %>"><i class="fas fa-angle-double-right"></i> </a></li>  
+      <% } %>        
+    </ul>
+  </nav>
+</div>

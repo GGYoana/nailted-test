@@ -1,0 +1,65 @@
+<% let opciones = [];
+ if(typeof categorias !== "undefined") {  
+   let datos = JSON.parse(categorias); 
+   for(var i = 0; i < 20; i ++ ) {
+         let {categoria,total} = datos[i]  
+        opciones.push({categoria, total}) 
+  } // end for   
+
+ } 
+ debugger
+ let langs = [];
+ if(typeof lang !== "undefined") {  
+   let languages = JSON.parse(lang); 
+   for(var i = 0; i < languages.length; i ++ ) {
+    debugger
+      langs.push(languages[i].lang) 
+  } // end for   
+
+ } 
+ 
+ %>
+<form action="/usuarios/paginate?page=1&limite=20" method="get">
+    <div class="row mb-4 d-flex align-items-center" style="background-color: #83adec;height: 85px;">
+      <!-- Search bar -->
+      <div class="col-sm-2 col-xl-2"></div>
+      <!-- Select option -->
+      <div class="col-sm-2 col-xl-2 mt-3 mt-lg-0">
+          <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm" id="order" name="order">
+            <option value="" <% if(locationSearch.order == "")  { %> selected <% } %>>Ordenar por:</option>        
+              <option value="nameAsc"   <% if(locationSearch.order == "nameAsc")  { %> selected <% } %>>Nombre Ascendente</option>
+              <option value="nameDesc"  <% if(locationSearch.order == "nameDesc") { %> selected <% } %>>Nombre Descendente</option>          
+              <option value="apeAsc"    <% if(locationSearch.order == "apeAsc")   { %> selected <% } %>>Apellido Ascendente</option>            
+              <option value="apeDesc"   <% if(locationSearch.order == "apeDesc")  { %> selected <% } %>>Apellido Descedente</option>       
+          </select>          
+      </div>
+      <div class="col-sm-2 col-xl-2">
+        <div class="p-2">
+          <div class="input-group input-borderless">
+            <input class="form-control me-1" type="search" placeholder="email" id="search" name="search" value="<% if(locationSearch.search != ""){ %><%- locationSearch.search %><%} %>">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2 col-xl-2">
+        <div class="p-2">
+          <div class="input-group input-borderless">
+            <label class="label-control">Desde</label>
+            <input class="form-control me-1" type="date" placeholder="Fecha Nacimiento desde" id="birthdateD" name="birthdateD" value="<% if(locationSearch.birthdateD != ""){ %><%- locationSearch.birthdateD %><%} %>">
+          </div>          
+        </div>
+      </div>
+      <div class="col-sm-2 col-xl-2">
+        <div class="p-2">
+          <div class="input-group input-borderless">
+            <label>Hasta</label>
+            <input class="form-control me-1" type="date" placeholder="Fecha Nacimiento hasta" id="birthdateH" name="birthdateH" value="<% if(locationSearch.birthdateH != ""){ %><%- locationSearch.birthdateH %><%} %>">
+          </div>        
+        </div>
+      </div>
+      
+      <div class="col-sm-1 col-xl-1 mt-3 mt-xl-0 d-grid">
+        <button type="submit" class="btn mb-0 rounded" style="background-color: #1c1c1c;"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+</form>
+

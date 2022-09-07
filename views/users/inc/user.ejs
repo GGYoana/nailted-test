@@ -1,0 +1,25 @@
+
+<div class="col-sm-6 col-lg-4 col-xl-3">
+  <div class="card shadow h-100">
+    <div class="card-body pb-0">
+      <div class="d-flex justify-content-between mb-2">
+      </div>
+      <h5 class="card-title text-center"><%= name %></h5>
+      <hr/>
+      <ul class="list mb-0">
+        <li class="list-item h6 fw-light mb-1 mb-sm-0"><strong>Nombre: </strong><%= name %></li>
+        <li class="list-item h6 fw-light mb-1 mb-sm-0"><strong>Apellidos: </strong><%= surname %></li>
+        <li class="list-item h6 fw-light mb-1 mb-sm-0"><strong>Dirección: </strong><%= address %></li>
+        <li class="list-item h6 fw-light mb-1 mb-sm-0"><strong>Teléfono: </strong><%= phone %></li>
+        <li class="list-item h6 fw-light mb-1 mb-sm-0"><strong>Email: </strong><%= email %></li>
+        <li class="list-item h6 fw-light mb-1 mb-sm-0"><strong>Fecha de nacimiento: </strong><%= birthdate %></li>
+      </ul>
+    </div>
+    <div class="card-footer pt-0 pb-3">      
+      <div class="d-flex justify-content-between">
+        <a class="h6 fw-light mb-0" href="/usuarios/<%= id %>"><i class="fas fa-table text-info me-2"></i>Ver detalles</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Card item END -->
